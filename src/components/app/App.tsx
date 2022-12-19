@@ -1,3 +1,18 @@
+import { useState } from 'react';
+import { RegisterType } from '../../types/registerType';
+import { Registration } from '../registration/registration';
+
 export function App() {
-    return <div className="container"></div>;
+    const initialState: Array<RegisterType> = [];
+
+    const [tasks, setTasks] = useState(initialState);
+
+    const handleAdd = function (task: RegisterType) {
+        setTasks([...tasks, task]);
+    };
+    return (
+        <div className="container">
+            <Registration handleAdd={handleAdd}></Registration>
+        </div>
+    );
 }
