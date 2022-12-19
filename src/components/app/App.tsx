@@ -9,6 +9,7 @@ export function App() {
 
     const handleAdd = function (task: RegisterType) {
         setTasks([...tasks, task]);
+        console.log(task)
     };
     return (
         <div className="container">

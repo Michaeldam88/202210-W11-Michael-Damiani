@@ -1,16 +1,16 @@
-import { SyntheticEvent, useState } from "react";
-import { Register, RegisterType } from "../../types/registerType";
+import { SyntheticEvent, useState } from 'react';
+import { Register, RegisterType } from '../../types/registerType';
 
-export function Registration({ handleAdd }: { handleAdd: (task: RegisterType) => void }) {
-    const initialFormData: Partial<RegisterType> = {
-        title: '',
-        responsible: '',
-    };
+export function Registration({
+    handleAdd,
+}: {
+    handleAdd: (task: RegisterType) => void;
+}) {
+    const initialFormData: Partial<RegisterType> = {};
 
     const [formData, setFormData] = useState(initialFormData);
 
     const handleInput = (ev: SyntheticEvent) => {
-        console.log('Input');
         const element = ev.target as HTMLFormElement;
         setFormData({ ...formData, [element.name]: element.value });
     };
@@ -19,8 +19,11 @@ export function Registration({ handleAdd }: { handleAdd: (task: RegisterType) =>
         ev.preventDefault();
         handleAdd(
             new Register(
-                formData.title as string,
-                formData.responsible ? formData.responsible : ''
+                formData.name,
+                formData.lastName,
+                formData.birthDate,
+                formData.gender,
+                formData.email
             )
         );
         setFormData(initialFormData);
@@ -30,19 +33,91 @@ export function Registration({ handleAdd }: { handleAdd: (task: RegisterType) =>
         <section>
             <form className="add-data" onSubmit={handleSubmit}>
                 <div>
-                    <label htmlFor="title">Name</label>
+                    <label htmlFor="name">Nombre</label>
                     <input
                         type="text"
-                        name="title"
-                        id="title"
+                        name="name"
+                        id="name"
                         placeholder="Escribe tu nombre"
-                        value={formData.title}
                         onInput={handleInput}
                         required
                     />
                 </div>
                 <div>
-                    <button type="submit">Back</button>
+                    <label htmlFor="lastName">Apellido</label>
+                    <input
+                        type="text"
+                        name="lastName"
+                        id="lastName"
+                        placeholder="Escribe tu apellido"
+                        onInput={handleInput}
+                        required
+                    />
+                </div>
+                <div>
+                    <label htmlFor="birthDate">Año de nacimiento</label>
+                    <input
+                        type="date"
+                        name="birthDate"
+                        id="birthDate"
+                        onInput={handleInput}
+                        required
+                    />
+                </div>
+                <div>
+                    <label htmlFor="gender">Genero</label>
+                    <input
+                        type="radio"
+                        id="hombre"
+                        name="gender"
+                        value="hombre"
+                        onInput={handleInput}
+                        required
+                    />
+                    <label htmlFor="hombre">Hombre</label>
+                    <input
+                        type="radio"
+                        id="mujer"
+                        name="gender"
+                        value="mujer"
+                        onInput={handleInput}
+                        required
+                    />
+                    <label htmlFor="mujer">Mujer</label>
+                    <input
+                        type="radio"
+                        id="reservado"
+                        name="gender"
+                        value="reservado"
+                        onInput={handleInput}
+                        required
+                    />
+                    <label htmlFor="reservado">Prefiero no indicarlo</label>
+                </div>
+                <div>
+                    <label htmlFor="email">E-mail</label>
+                    <input
+                        type="email"
+                        name="email"
+                        id="email"
+                        placeholder="Escribe tu correo electrónico"
+                        onInput={handleInput}
+                        required
+                    />
+                </div>
+                <div>
+                    <label htmlFor="newsletter">
+                        Suscribete a nuestra newsletter
+                    </label>
+                    <input
+                        type="checkbox"
+                        name="newsletter"
+                        id="newsletter"
+                        onInput={handleInput}
+                    />
+                </div>
+                <div>
+                    <button>Back</button>
                     <button type="submit">Next</button>
                 </div>
             </form>
