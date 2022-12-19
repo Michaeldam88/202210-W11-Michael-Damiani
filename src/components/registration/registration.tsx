@@ -6,7 +6,14 @@ export function Registration({
 }: {
     handleAdd: (task: RegisterType) => void;
 }) {
-    const initialFormData: Partial<RegisterType> = {};
+    const initialFormData: Partial<RegisterType> = {
+        name: '',
+        lastName: '',
+        birthDate: 0,
+        gender: '',
+        email: '',
+        newsletter: true,
+    };
 
     const [formData, setFormData] = useState(initialFormData);
 
@@ -15,15 +22,19 @@ export function Registration({
         setFormData({ ...formData, [element.name]: element.value });
     };
 
+    const handleChange = () => {
+        setFormData({ ...formData, newsletter: !formData.newsletter });
+    };
+
     const handleSubmit = (ev: SyntheticEvent) => {
         ev.preventDefault();
         handleAdd(
             new Register(
-                formData.name,
-                formData.lastName,
-                formData.birthDate,
-                formData.gender,
-                formData.email
+                formData.name as string,
+                formData.lastName as string,
+                formData.birthDate as number,
+                formData.gender as string,
+                formData.email as string
             )
         );
         setFormData(initialFormData);
@@ -113,7 +124,8 @@ export function Registration({
                         type="checkbox"
                         name="newsletter"
                         id="newsletter"
-                        onInput={handleInput}
+                        checked={!formData.newsletter}
+                        onChange={handleChange}
                     />
                 </div>
                 <div>
