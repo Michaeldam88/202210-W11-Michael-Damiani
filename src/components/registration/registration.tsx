@@ -1,11 +1,16 @@
 import { SyntheticEvent, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Register, RegisterType } from '../../types/registerType';
 
-export function Registration({
-    handleAdd,
-}: {
-    handleAdd: (task: RegisterType) => void;
-}) {
+export function Registration() {
+    const initialState: Array<RegisterType> = [];
+
+    const [registers, setRegister] = useState(initialState);
+
+    const handleAdd = function (register: RegisterType) {
+        setRegister([...registers, register]);
+    };
+
     const initialFormData: Partial<RegisterType> = {
         name: '',
         lastName: '',
@@ -27,6 +32,7 @@ export function Registration({
     };
 
     const handleSubmit = (ev: SyntheticEvent) => {
+        console.log(registers);
         ev.preventDefault();
         handleAdd(
             new Register(
@@ -130,7 +136,12 @@ export function Registration({
                 </div>
                 <div>
                     <button>Back</button>
-                    <button type="submit">Next</button>
+                    <Link
+                        to={'/acces-data'}
+                        onClick={(e) => e.preventDefault()}
+                    >
+                        <button type="submit">Next</button>
+                    </Link>
                 </div>
             </form>
         </section>
