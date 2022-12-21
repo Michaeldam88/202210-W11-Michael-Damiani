@@ -1,5 +1,5 @@
 import { SyntheticEvent, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Register, RegisterType } from '../../types/registerType';
 
 export function Registration() {
@@ -23,11 +23,13 @@ export function Registration() {
     const handleChange = () => {
         setSubscribed(!subscribed);
         if (!subscribed) {
-            setFormData({ ...formData, newsletter: 'si' });
+            setFormData({ ...formData, newsletter: 'Si' });
         } else {
-            setFormData({ ...formData, newsletter: 'no' });
+            setFormData({ ...formData, newsletter: 'No' });
         }
     };
+
+    const navigate = useNavigate();
 
     const handleSubmit = (ev: SyntheticEvent) => {
         ev.preventDefault();
@@ -45,7 +47,7 @@ export function Registration() {
             )
         );
 
-        setFormData(initialFormData);
+        navigate('/acces-data');
     };
 
     return (
@@ -137,8 +139,7 @@ export function Registration() {
                     />
                 </div>
                 <div>
-                    <button type="submit">submit</button>
-                    <Link to={'/acces-data'}>next</Link>
+                    <button type="submit">next</button>
                 </div>
             </form>
         </section>

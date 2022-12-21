@@ -1,5 +1,5 @@
 import { SyntheticEvent, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { accesType } from '../../types/accesType';
 
 export function AccesData() {
@@ -31,6 +31,8 @@ export function AccesData() {
         }
     };
 
+    const navigate = useNavigate();
+
     const handleSubmit = (ev: SyntheticEvent) => {
         ev.preventDefault();
         if (correctPassword) {
@@ -46,6 +48,8 @@ export function AccesData() {
         } else {
             alert('Corrige la contraseña');
         }
+
+        navigate('/confirmation');
     };
 
     return (
@@ -109,8 +113,7 @@ export function AccesData() {
                     <Link to={'/register'}>
                         <button>Previous</button>
                     </Link>
-                    <button type="submit">submit</button>
-                    <Link to={'/confirmation'}>next</Link>
+                    <button type="submit">next</button>
                 </div>
             </form>
         </section>
