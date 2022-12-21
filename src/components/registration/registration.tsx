@@ -8,7 +8,7 @@ export function Registration() {
         lastName: '',
         gender: '',
         email: '',
-        newsletter: false        
+        newsletter: 'no',
     };
 
     const [formData, setFormData] = useState(initialFormData);
@@ -18,8 +18,15 @@ export function Registration() {
         setFormData({ ...formData, [element.name]: element.value });
     };
 
+    const [subscribed, setSubscribed] = useState(false);
+
     const handleChange = () => {
-        setFormData({ ...formData, newsletter: !formData.newsletter });
+        setSubscribed(!subscribed);
+        if (!subscribed) {
+            setFormData({ ...formData, newsletter: 'si' });
+        } else {
+            setFormData({ ...formData, newsletter: 'no' });
+        }
     };
 
     const handleSubmit = (ev: SyntheticEvent) => {
@@ -33,7 +40,7 @@ export function Registration() {
                     formData.birthDate as number,
                     formData.gender as string,
                     formData.email as string,
-                    formData.newsletter as boolean
+                    formData.newsletter as string
                 )
             )
         );
@@ -82,7 +89,7 @@ export function Registration() {
                         type="radio"
                         id="hombre"
                         name="gender"
-                        value="hombre"
+                        value="Hombre"
                         onInput={handleInput}
                         required
                     />
@@ -91,7 +98,7 @@ export function Registration() {
                         type="radio"
                         id="mujer"
                         name="gender"
-                        value="mujer"
+                        value="Mujer"
                         onInput={handleInput}
                         required
                     />
@@ -100,7 +107,7 @@ export function Registration() {
                         type="radio"
                         id="reservado"
                         name="gender"
-                        value="reservado"
+                        value="Reservado"
                         onInput={handleInput}
                         required
                     />
@@ -125,7 +132,7 @@ export function Registration() {
                         type="checkbox"
                         name="newsletter"
                         id="newsletter"
-                        checked={formData.newsletter}
+                        checked={subscribed}
                         onChange={handleChange}
                     />
                 </div>

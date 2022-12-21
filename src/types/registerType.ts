@@ -5,7 +5,7 @@ export type RegisterType = {
     birthDate: number;
     gender: string;
     email: string;
-    newsletter: boolean;
+    newsletter: string;
 };
 
 export class Register implements RegisterType {
@@ -22,7 +22,7 @@ export class Register implements RegisterType {
         public birthDate: number,
         public gender: string,
         public email: string,
-        public newsletter: boolean
+        public newsletter: string
     ) {
         this.id = Register.generateId();
     }

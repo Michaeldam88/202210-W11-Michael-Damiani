@@ -12,6 +12,7 @@ export function AccesData() {
     const [passwordMessage, setPasswordMessage] = useState('');
 
     const [accesData, setAccesData] = useState(initialAccesData);
+    const [correctPassword, setCorrectPassword] = useState(false);
 
     const handleInput = (ev: SyntheticEvent) => {
         const element = ev.target as HTMLFormElement;
@@ -20,23 +21,31 @@ export function AccesData() {
 
     const checkCorrectPasw = (ev: SyntheticEvent) => {
         const element = ev.target as HTMLFormElement;
-        setAccesData({ ...accesData, [element.name]: element.value });
+        //setAccesData({ ...accesData, [element.name]: element.value });
         if (element.value === accesData.password) {
             setPasswordMessage('');
+            setCorrectPassword(true);
         } else {
             setPasswordMessage('Las contraseñas no coinciden');
+            setCorrectPassword(false);
         }
     };
 
     const handleSubmit = (ev: SyntheticEvent) => {
         ev.preventDefault();
-        const userData = JSON.parse(localStorage.getItem('userData') as string);
-        localStorage.setItem(
-            'userData',
-            JSON.stringify({ ...userData, ...accesData })
-        );
+        if (correctPassword) {
+            const userData = JSON.parse(
+                localStorage.getItem('userData') as string
+            );
+            localStorage.setItem(
+                'userData',
+                JSON.stringify({ ...userData, ...accesData })
+            );
 
-        setAccesData(initialAccesData);
+            setAccesData(initialAccesData);
+        } else {
+            alert('Corrige la contraseña');
+        }
     };
 
     return (
@@ -91,9 +100,9 @@ export function AccesData() {
                         onInput={handleInput}
                     >
                         <option value="">--Seleccione una opción--</option>
-                        <option value="personal">Personal</option>
-                        <option value="pro">Pro</option>
-                        <option value="business">Business</option>
+                        <option value="Personal">Personal</option>
+                        <option value="Pro">Pro</option>
+                        <option value="Business">Business</option>
                     </select>
                 </div>
                 <div>
