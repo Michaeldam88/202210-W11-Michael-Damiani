@@ -2,6 +2,10 @@
 
 # Challege Week 11
 
+Netlify: https://tangerine-salamander-34282a.netlify.app/
+
+Sonar: https://sonarcloud.io/project/overview?id=Michaeldam88_202210-W1-Michael-Damiani
+
 ## Formulario React & TypeScript
 
 Crea con React un formulario de tres pasos.

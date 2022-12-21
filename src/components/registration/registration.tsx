@@ -3,21 +3,12 @@ import { Link } from 'react-router-dom';
 import { Register, RegisterType } from '../../types/registerType';
 
 export function Registration() {
-    const initialState: Array<RegisterType> = [];
-
-    const [registers, setRegister] = useState(initialState);
-
-    const handleAdd = function (register: RegisterType) {
-        setRegister([...registers, register]);
-    };
-
     const initialFormData: Partial<RegisterType> = {
         name: '',
         lastName: '',
-        birthDate: 0,
         gender: '',
         email: '',
-        newsletter: true,
+        newsletter: false        
     };
 
     const [formData, setFormData] = useState(initialFormData);
@@ -32,17 +23,21 @@ export function Registration() {
     };
 
     const handleSubmit = (ev: SyntheticEvent) => {
-        console.log(registers);
         ev.preventDefault();
-        handleAdd(
-            new Register(
-                formData.name as string,
-                formData.lastName as string,
-                formData.birthDate as number,
-                formData.gender as string,
-                formData.email as string
+        localStorage.setItem(
+            'userData',
+            JSON.stringify(
+                new Register(
+                    formData.name as string,
+                    formData.lastName as string,
+                    formData.birthDate as number,
+                    formData.gender as string,
+                    formData.email as string,
+                    formData.newsletter as boolean
+                )
             )
         );
+
         setFormData(initialFormData);
     };
 
@@ -130,18 +125,13 @@ export function Registration() {
                         type="checkbox"
                         name="newsletter"
                         id="newsletter"
-                        checked={!formData.newsletter}
+                        checked={formData.newsletter}
                         onChange={handleChange}
                     />
                 </div>
                 <div>
-                    <button>Back</button>
-                    <Link
-                        to={'/acces-data'}
-                        onClick={(e) => e.preventDefault()}
-                    >
-                        <button type="submit">Next</button>
-                    </Link>
+                    <button type="submit">submit</button>
+                    <Link to={'/acces-data'}>next</Link>
                 </div>
             </form>
         </section>

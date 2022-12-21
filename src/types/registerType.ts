@@ -15,15 +15,15 @@ export class Register implements RegisterType {
         return ('000000' + aNumbers[0]).slice(-6);
     }
     id: string;
-    newsletter: boolean;
+
     constructor(
         public name: string,
         public lastName: string,
         public birthDate: number,
         public gender: string,
-        public email: string
+        public email: string,
+        public newsletter: boolean
     ) {
         this.id = Register.generateId();
-        this.newsletter = false;
     }
 }
