@@ -2,7 +2,7 @@ import { SyntheticEvent, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 export function Login() {
-    const userData = JSON.parse(localStorage.getItem('userData') as string);
+    const userData = JSON.parse(sessionStorage.getItem('userData') as string);
 
     const [loginData, setloginData] = useState({
         username: '',
@@ -22,13 +22,14 @@ export function Login() {
         ) {
             setLoginMessage('Bienvenido');
         } else {
-            setLoginMessage('Usuario o contraseña incorrecto');
+            setLoginMessage('Usuario o contraseña incorrectos');
         }
     };
     return (
-        <section>
-            <h2>Login</h2>
+        <section className="login">
+            <h2 className="login__title">Login</h2>
             <input
+                className="login__input"
                 type="text"
                 id="username"
                 name="username"
@@ -37,6 +38,7 @@ export function Login() {
                 required
             />
             <input
+                className="login__input"
                 type="password"
                 id="password"
                 name="password"
@@ -44,11 +46,15 @@ export function Login() {
                 onInput={handleInput}
                 required
             />
-            <Link to={'/confirmation'}>
-                <button>Atras</button>
-            </Link>
-            <button onClick={login}>Entrar</button>
-            <p>{loginMessage}</p>
+            <div className="add-data__button-container">
+                <Link to={'/confirmation'}>
+                    <button className="login__button">Atras</button>
+                </Link>
+                <button className="login__button" onClick={login}>
+                    Entrar
+                </button>
+            </div>
+            <p className="add-data__error-message">{loginMessage}</p>
         </section>
     );
 }

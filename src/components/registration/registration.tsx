@@ -33,7 +33,7 @@ export function Registration() {
 
     const handleSubmit = (ev: SyntheticEvent) => {
         ev.preventDefault();
-        localStorage.setItem(
+        sessionStorage.setItem(
             'userData',
             JSON.stringify(
                 new Register(
@@ -52,8 +52,9 @@ export function Registration() {
 
     return (
         <section>
+            <h2 className="container__title">Datos Personales</h2>
             <form className="add-data" onSubmit={handleSubmit}>
-                <div>
+                <div className="add-data__input-container">
                     <label htmlFor="name">Nombre</label>
                     <input
                         type="text"
@@ -64,7 +65,7 @@ export function Registration() {
                         required
                     />
                 </div>
-                <div>
+                <div className="add-data__input-container">
                     <label htmlFor="lastName">Apellido</label>
                     <input
                         type="text"
@@ -75,7 +76,7 @@ export function Registration() {
                         required
                     />
                 </div>
-                <div>
+                <div className="add-data__input-container">
                     <label htmlFor="birthDate">Año de nacimiento</label>
                     <input
                         type="date"
@@ -85,37 +86,40 @@ export function Registration() {
                         required
                     />
                 </div>
-                <div>
+                <div className="add-data__input-container">
                     <label htmlFor="gender">Genero</label>
-                    <input
-                        type="radio"
-                        id="hombre"
-                        name="gender"
-                        value="Hombre"
-                        onInput={handleInput}
-                        required
-                    />
-                    <label htmlFor="hombre">Hombre</label>
-                    <input
-                        type="radio"
-                        id="mujer"
-                        name="gender"
-                        value="Mujer"
-                        onInput={handleInput}
-                        required
-                    />
-                    <label htmlFor="mujer">Mujer</label>
-                    <input
-                        type="radio"
-                        id="reservado"
-                        name="gender"
-                        value="Reservado"
-                        onInput={handleInput}
-                        required
-                    />
-                    <label htmlFor="reservado">Prefiero no indicarlo</label>
+                    <div className="add-data__input-container--radio">
+                        <input
+                            type="radio"
+                            id="hombre"
+                            name="gender"
+                            value="Hombre"
+                            onInput={handleInput}
+                            required
+                        />
+                        <label htmlFor="hombre">Hombre</label>
+                        <input
+                            type="radio"
+                            id="mujer"
+                            name="gender"
+                            value="Mujer"
+                            onInput={handleInput}
+                            required
+                        />
+                        <label htmlFor="mujer">Mujer</label>
+                        <input
+                            type="radio"
+                            id="reservado"
+                            name="gender"
+                            value="Reservado"
+                            onInput={handleInput}
+                            required
+                        />
+                        <label htmlFor="reservado">Prefiero no indicarlo</label>
+                    </div>
                 </div>
-                <div>
+
+                <div className="add-data__input-container">
                     <label htmlFor="email">E-mail</label>
                     <input
                         type="email"
@@ -126,7 +130,7 @@ export function Registration() {
                         required
                     />
                 </div>
-                <div>
+                <div className="add-data__newsletter">
                     <label htmlFor="newsletter">
                         Suscribete a nuestra newsletter
                     </label>
@@ -138,8 +142,10 @@ export function Registration() {
                         onChange={handleChange}
                     />
                 </div>
-                <div>
-                    <button type="submit">next</button>
+                <div className="add-data__button-container">
+                    <button className="add-data__button" type="submit">
+                        Next
+                    </button>
                 </div>
             </form>
         </section>
