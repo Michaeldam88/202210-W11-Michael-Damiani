@@ -28,7 +28,7 @@ body {
                 color: rgb(195, 200, 205);
                 font-size: 1.2rem;
                 font-style: italic;
-                margin: 0 0 0 0.4rem
+                margin: 0 0 0 0.4rem;
             }
         }
     }
@@ -88,5 +88,31 @@ body {
     &__error-message {
         color: #da8383;
         margin: 0.4rem 0 -0.3rem 0;
+    }
+}
+
+.login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 5rem;
+    &__title {
+        color: #c4c0c2;
+    }
+    &__button {
+        padding: 0.2rem 0.5em;
+        font-size: 1rem;
+        font-weight: 400;
+        border-radius: 0.3rem;
+        background-color: #c4c0c2;
+    }
+    &__input {
+        font-size: 1rem;
+        font-weight: 400;
+        border-radius: 0.6rem;
+        padding: 0.3rem 0.5rem;
+        background-color: #c4c0c2;
+        color: black;
+        margin-bottom: 0.6rem;
     }
 }

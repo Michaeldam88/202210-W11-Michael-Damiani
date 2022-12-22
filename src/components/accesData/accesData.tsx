@@ -37,9 +37,9 @@ export function AccesData() {
         ev.preventDefault();
         if (correctPassword) {
             const userData = JSON.parse(
-                localStorage.getItem('userData') as string
+                sessionStorage.getItem('userData') as string
             );
-            localStorage.setItem(
+            sessionStorage.setItem(
                 'userData',
                 JSON.stringify({ ...userData, ...accesData })
             );

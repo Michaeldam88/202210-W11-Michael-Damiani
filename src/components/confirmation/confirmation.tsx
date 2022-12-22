@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 export function Confirmation() {
-    const userData = JSON.parse(localStorage.getItem('userData') as string);
+    const userData = JSON.parse(sessionStorage.getItem('userData') as string);
 
     return (
         <section>

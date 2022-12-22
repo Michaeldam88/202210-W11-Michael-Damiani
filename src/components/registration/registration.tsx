@@ -33,7 +33,7 @@ export function Registration() {
 
     const handleSubmit = (ev: SyntheticEvent) => {
         ev.preventDefault();
-        localStorage.setItem(
+        sessionStorage.setItem(
             'userData',
             JSON.stringify(
                 new Register(
