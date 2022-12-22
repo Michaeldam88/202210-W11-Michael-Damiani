@@ -17,11 +17,25 @@ describe('Given Login Page component', () => {
             const title = screen.getByRole('heading', { name: 'Login' });
             expect(title).toBeInTheDocument();
         });
+        test(`The username input`, () => {
+            const usernInput = screen.getByPlaceholderText('Username');
+            expect(usernInput).toBeInTheDocument();
+        });
 
-        // test(`Then component should render access button`, () => {
-        //     const elementButton = screen.getByRole('button');
-        //     expect(elementButton).toBeInTheDocument();
-        // });
+        test(`The password input`, () => {
+            const passwInput = screen.getByPlaceholderText('Contraseña');
+            expect(passwInput).toBeInTheDocument();
+        });
+
+        test(`The back button`, () => {
+            const backButton = screen.getByRole('button', { name: 'Atras' });
+            expect(backButton).toBeInTheDocument();
+        });
+
+        test(`The login button`, () => {
+            const loginButton = screen.getByRole('button', { name: 'Entrar' });
+            expect(loginButton).toBeInTheDocument();
+        });
 
         // describe('When data are provided in the form', () => {
         //     const userData = loginDataMock;
