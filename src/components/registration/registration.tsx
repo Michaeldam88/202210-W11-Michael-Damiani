@@ -52,7 +52,7 @@ export function Registration() {
 
     return (
         <section>
-            <h2 className="container__title">Registrate</h2>
+            <h2 className="container__title">Datos Personales</h2>
             <form className="add-data" onSubmit={handleSubmit}>
                 <div className="add-data__input-container">
                     <label htmlFor="name">Nombre</label>

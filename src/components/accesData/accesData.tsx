@@ -54,8 +54,9 @@ export function AccesData() {
 
     return (
         <section>
+            <h2 className="container__title">Datos de acceso</h2>
             <form className="add-data" onSubmit={handleSubmit}>
-                <div>
+                <div className="add-data__input-container">
                     <label htmlFor="username">Username</label>
                     <input
                         type="text"
@@ -66,7 +67,7 @@ export function AccesData() {
                         required
                     />
                 </div>
-                <div>
+                <div className="add-data__input-container">
                     <label htmlFor="password">Contraseña</label>
                     <input
                         minLength={4}
@@ -78,7 +79,7 @@ export function AccesData() {
                         required
                     />
                 </div>
-                <div>
+                <div className="add-data__input-container">
                     <label htmlFor="confirmPassword">
                         Confirma tu contraseña
                     </label>
@@ -91,9 +92,11 @@ export function AccesData() {
                         onInput={checkCorrectPasw}
                         required
                     />
-                    <p>{passwordMessage}</p>
+                    <p className="add-data__error-message">
+                        {passwordMessage}
+                    </p>
                 </div>
-                <div>
+                <div className="add-data__input-container">
                     <label htmlFor="accountType">
                         Selecciona el tipo de Cuenta
                     </label>
@@ -109,11 +112,13 @@ export function AccesData() {
                         <option value="Business">Business</option>
                     </select>
                 </div>
-                <div>
+                <div className="add-data__button-container">
                     <Link to={'/register'}>
-                        <button>Previous</button>
+                        <button className="add-data__button">Atras</button>
                     </Link>
-                    <button type="submit">next</button>
+                    <button className="add-data__button" type="submit">
+                        Next
+                    </button>
                 </div>
             </form>
         </section>

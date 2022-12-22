@@ -8,11 +8,29 @@ body {
 }
 
 .container {
+    height: 30em;
+    width: 25rem;
     background-color: #201e22;
     padding: 2rem;
     border-radius: 1.5rem;
+    position: relative;
     &__title {
         color: #c4c0c2;
+    }
+    &__list {
+        list-style: none;
+        & li {
+            display: flex;
+            color: aliceblue;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            & p {
+                color: rgb(195, 200, 205);
+                font-size: 1.2rem;
+                font-style: italic;
+                margin: 0 0 0 0.4rem
+            }
+        }
     }
 }
 
@@ -28,14 +46,15 @@ body {
         &--radio {
             flex-direction: row;
             font-size: 1.1rem;
-            & label{
-                margin-right: .5rem;
+            & label {
+                margin-right: 0.5rem;
             }
         }
         & label {
             margin-bottom: 0.2rem;
         }
-        & input {
+        & input,
+        select {
             font-size: 1rem;
             font-weight: 400;
             border-radius: 0.6rem;
@@ -50,19 +69,24 @@ body {
         margin-top: 0.7rem;
         margin-bottom: 1rem;
     }
-    &__button-container{
-        display: flex;
-        justify-content: center;
+    &__button-container {
+        position: absolute;
+        bottom: 2rem;
+        left: 40%;
     }
-    &__button{
+    &__button {
         padding: 0.2rem 0.5em;
         font-size: 1rem;
         font-weight: 400;
         border-radius: 0.3rem;
-        background-color: #c4c0c2;       
+        background-color: #c4c0c2;
     }
-    &__button:hover{
+    &__button:hover {
         cursor: pointer;
     }
 
+    &__error-message {
+        color: #da8383;
+        margin: 0.4rem 0 -0.3rem 0;
+    }
 }
